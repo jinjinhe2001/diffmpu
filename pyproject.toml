@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# "diffmpu" is the distribution name only; the import package stays "mpu" (import mpu).
+name = "diffmpu"
+version = "1.0.0"
+description = "Multi-level Partition of Unity on Differentiable Moving Particles (ACM TOG 43(6), SIGGRAPH Asia 2024): official Taichi / PyTorch implementation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Jinjin He" }]
+keywords = ["implicit surface", "partition of unity", "differentiable", "surface reconstruction", "inverse rendering", "taichi"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Multimedia :: Graphics :: 3D Modeling",
+    "Topic :: Scientific/Engineering",
+]
+# pytorch3d (kNN / GPU marching cubes) and nvdiffrast (inverse rendering) have no PyPI wheels and are
+# installed separately, see README.md.
+dependencies = [
+    "torch",
+    "taichi==1.7.3",
+    "numpy<2",
+    "scipy",
+    "trimesh",
+    "libigl",
+    "scikit-image",
+    "pillow",
+    "open3d",
+]
+
+[project.optional-dependencies]
+preprocessing = ["pymeshlab"]
+
+[tool.setuptools.packages.find]
+include = ["mpu*"]

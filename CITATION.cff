@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below (preferred-citation)."
+type: software
+title: "Multi-level Partition of Unity on Differentiable Moving Particles"
+version: 1.0.0
+license: MIT
+repository-code: https://github.com/jinjinhe2001/diffmpu
+url: https://jinjinhe2001.github.io/diffmpu-page/
+authors:
+  - family-names: He
+    given-names: Jinjin
+    affiliation: Dartmouth College
+preferred-citation:
+  type: article
+  title: "Multi-level Partition of Unity on Differentiable Moving Particles"
+  authors:
+    - family-names: He
+      given-names: Jinjin
+      affiliation: Dartmouth College
+    - family-names: Zhang
+      given-names: Taiyuan
+      affiliation: Dartmouth College
+    - family-names: Kobayashi
+      given-names: Hiroki
+      affiliation: Toyota Central R&D Labs., Inc.
+    - family-names: Kawamoto
+      given-names: Atsushi
+      affiliation: Toyota Central R&D Labs., Inc.
+    - family-names: Zhou
+      given-names: Yuqing
+      affiliation: Toyota Research Institute of North America
+    - family-names: Nomura
+      given-names: Tsuyoshi
+      affiliation: Toyota Central R&D Labs., Inc.
+    - family-names: Zhu
+      given-names: Bo
+      affiliation: Georgia Institute of Technology
+  journal: "ACM Transactions on Graphics"
+  volume: 43
+  issue: 6
+  number: 273
+  start: 1
+  end: 21
+  year: 2024
+  month: 12
+  doi: "10.1145/3687989"
+  url: https://dl.acm.org/doi/10.1145/3687989

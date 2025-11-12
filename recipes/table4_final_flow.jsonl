@@ -1,0 +1,21 @@
+# Table 4 stage 2 (armadillo / spot / fandisk; NOT for the lattice shapes vbunny / kangaroo / dino, which use visual-hull
+# carving without the late phase): the corrected late flow, run on the saved pre-final particles of a finished
+# table4_render.jsonl run (runs/<table4 run>/particles.pt). tools/resume_eval.py writes
+# runs/<table4 run>/resume_result_final_flow/ and runs/<table4 run>/result_final_flow.json.
+# Flags: no resampling (--final_resample none), Large-Steps lambda 10 (--ls_lambda2 10), mesh vertex normals with
+# gradients for the shading (--mesh_normals_from 1), 1200 flow iterations at 400^3 marching cubes (--mc_res 400) with
+# the step speed 0.02 cells annealed geometrically (--speed_cells2 0.02 --final_flow_anneal 0.05).
+# The second line evaluates the same particles at 320^3 MC (the "320^3" PSNR values) with
+#   --final_flow_iters 0 --eval_mc_res 320 --particles runs/<run>/resume_result_final_flow/particles.pt
+# Run the first line to completion before the second one. The stage-1 run must exist (scripts/launch.py skips a line
+# whose runs/<name>/result.json exists, so give the stage-2 lines their own names, as below).
+{"name": "table4/armadillo_1536_s0_ff", "cmd": "python tools/resume_eval.py runs/table4/armadillo_1536_s0 --out_name result_final_flow.json --final_resample none --ls_lambda2 10 --mesh_normals_from 1 --final_flow_iters 1200 --speed_cells2 0.02 --final_flow_anneal 0.05 --mc_res 400"}
+{"name": "table4/armadillo_1536_s0_ff320", "cmd": "python tools/resume_eval.py runs/table4/armadillo_1536_s0 --out_name result_final_flow_320.json --final_resample none --final_flow_iters 0 --eval_mc_res 320 --particles runs/table4/armadillo_1536_s0/resume_result_final_flow/particles.pt"}
+# spot, fandisk and genus6 use the same flag set (--final_flow_anneal 0.1 for
+# some rows). Their lines are kept commented out until the corresponding stage-1 runs exist:
+# genus6 (the same flag set on runs/table4/genus6_1024_long):
+# {"name": "table4/genus6_1024_long_ff", "cmd": "python tools/resume_eval.py runs/table4/genus6_1024_long --out_name result_final_flow.json --final_resample none --ls_lambda2 10 --mesh_normals_from 1 --final_flow_iters 1200 --speed_cells2 0.02 --final_flow_anneal 0.05 --mc_res 400"}
+# {"name": "table4/spot_1024_long_ff", "cmd": "python tools/resume_eval.py runs/table4/spot_1024_long --out_name result_final_flow.json --final_resample none --ls_lambda2 10 --mesh_normals_from 1 --final_flow_iters 1200 --speed_cells2 0.02 --final_flow_anneal 0.05 --mc_res 400"}
+# {"name": "table4/spot_1024_long_ff320", "cmd": "python tools/resume_eval.py runs/table4/spot_1024_long --out_name result_final_flow_320.json --final_resample none --final_flow_iters 0 --eval_mc_res 320 --particles runs/table4/spot_1024_long/resume_result_final_flow/particles.pt"}
+# {"name": "table4/fandisk_1024_long_ff", "cmd": "python tools/resume_eval.py runs/table4/fandisk_1024_long --out_name result_final_flow.json --final_resample none --ls_lambda2 10 --mesh_normals_from 1 --final_flow_iters 1200 --speed_cells2 0.02 --final_flow_anneal 0.05 --mc_res 400"}
+# {"name": "table4/fandisk_1024_long_ff320", "cmd": "python tools/resume_eval.py runs/table4/fandisk_1024_long --out_name result_final_flow_320.json --final_resample none --final_flow_iters 0 --eval_mc_res 320 --particles runs/table4/fandisk_1024_long/resume_result_final_flow/particles.pt"}

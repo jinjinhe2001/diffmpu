@@ -1,0 +1,12 @@
+# Table 6: moving vs fixed feature particles on Stanford scans. Configuration: 6 levels (base 16, finest 512),
+# curvature thresholds [0,8,16,32,64,128], 3M oriented samples. moving = n_proj=3 projection rounds move the feature particles
+# onto the surface); fixed = n_proj=0 (feature particles stay at the cell centres). --curv_mode mesh: the Table 6 lines assign the
+# grid levels from the cotan mesh curvature; with the default robust curvature the armadillo gets 83k instead of 115k feature
+# particles. --time_rebuild also reports the warm rebuild time (the build / query columns of the table). Commands run from the
+# repository root; scripts/launch.py appends --out runs/<name>.
+{"name": "table6/moving_armadillo", "cmd": "python scripts/run_recon.py --mc_res 512 --iou_res 256 --chamfer_n 500000 --curv_mode mesh --thin_boost 2.0 --time_rebuild --set aux_shells=[0.25,0.5,0.75] thresholds=[0,8,16,32,64,128] max_fp=786432 n_proj=3 --mesh data/Armadillo.ply"}
+{"name": "table6/moving_happy", "cmd": "python scripts/run_recon.py --mc_res 512 --iou_res 256 --chamfer_n 500000 --curv_mode mesh --thin_boost 2.0 --time_rebuild --set aux_shells=[0.25,0.5,0.75] thresholds=[0,8,16,32,64,128] max_fp=786432 n_proj=3 --mesh data/happy_vrip.ply"}
+{"name": "table6/moving_statuette", "cmd": "python scripts/run_recon.py --mc_res 512 --iou_res 256 --chamfer_n 500000 --curv_mode mesh --thin_boost 2.0 --time_rebuild --set aux_shells=[0.25,0.5,0.75] thresholds=[0,8,16,32,64,128] max_fp=786432 n_proj=3 --mesh data/xyzrgb_statuette.ply"}
+{"name": "table6/fixed_armadillo", "cmd": "python scripts/run_recon.py --mc_res 512 --iou_res 256 --chamfer_n 500000 --curv_mode mesh --thin_boost 2.0 --time_rebuild --set aux_shells=[0.25,0.5,0.75] thresholds=[0,8,16,32,64,128] max_fp=786432 n_proj=0 --mesh data/Armadillo.ply"}
+{"name": "table6/fixed_happy", "cmd": "python scripts/run_recon.py --mc_res 512 --iou_res 256 --chamfer_n 500000 --curv_mode mesh --thin_boost 2.0 --time_rebuild --set aux_shells=[0.25,0.5,0.75] thresholds=[0,8,16,32,64,128] max_fp=786432 n_proj=0 --mesh data/happy_vrip.ply"}
+{"name": "table6/fixed_statuette", "cmd": "python scripts/run_recon.py --mc_res 512 --iou_res 256 --chamfer_n 500000 --curv_mode mesh --thin_boost 2.0 --time_rebuild --set aux_shells=[0.25,0.5,0.75] thresholds=[0,8,16,32,64,128] max_fp=786432 n_proj=0 --mesh data/xyzrgb_statuette.ply"}

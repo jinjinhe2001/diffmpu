@@ -1,0 +1,14 @@
+# core, tested with Python 3.10, CUDA 12.1, NVIDIA H100 (install torch first, see README)
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+taichi==1.7.3
+numpy==1.26.4
+scipy==1.15.0
+trimesh==3.23.5
+libigl==2.6.3            # import igl: winding-number IoU, curvature, point-mesh distance
+scikit-image==0.25.2      # marching-cubes fallback when pytorch3d is absent; make_watertight
+open3d==0.20.0            # screened Poisson resampling (Tables 2, 3; Table 5 with --resample_mode poisson)
+pillow==12.3.0
+# no PyPI wheels, install separately (see README): pytorch3d (kNN / marching cubes for the differentiable tasks), nvdiffrast (Table 4)
+# These are the exact versions of the reference environment (Python 3.10.20, CUDA 12.1) behind the expected results in docs/EXPERIMENTS.md; pytorch3d was built from
+# git commit 978cd99 and nvdiffrast 0.4.0 from source (scripts/setup_env.sh). Newer versions work too (RTX 5080: torch 2.11+cu128, Python 3.12).

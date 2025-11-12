@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.vscode/
+.idea/
+/runs/
+/runs_local/
+/data/*
+!/data/README.md
+*.ply
+*.obj
+*.off
+*.npz
+*.pt
+*.log
